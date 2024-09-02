@@ -34,12 +34,12 @@ The configuration on Apache Guacamole is straight forward.
     > Enable audio: *checked*<br>
     > Audio server name: *rbi-norm-1234*<br>
 
-3. Integrated installation with containers, dynamic session to https://github.com, using licensed [projector-supra-web](/resources/projector_supra.md) with auto login. 
+3. Integrated installation with containers, dynamic session to https://github.com, using licensed [projector-supra-web](https://github.com/supraaxes/projector-supra-web) with auto login. 
     
-    > *NOTE: 
-    >   1. The guacd container is in the same network as the SupraRBI-VNC server*. <br>
-    >   2. The github autofill setting file on host is /opt/supra/rbi/conf/autofill/github.json
-    >   3. The license file on host is /opt/supra/rbi/conf/license.json
+    > *NOTE:*<br> 
+    >   *1. The guacd container is in the same network as the SupraRBI-VNC server*. <br>
+    >   *2. The github autofill setting file on host is /opt/supra/rbi/conf/autofill/github.json* <br>
+    >   *3. The license file on host is /opt/supra/rbi/conf/license.json*
     >
     > Name: *rbi-google*<br>
     > Protocol: *VNC*<br>

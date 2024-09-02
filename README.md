@@ -5,10 +5,11 @@ Please ensure that the VNC client supports SecurityTypeTLS (0x13, VNC Authentica
 
 [**Integration with Apache Guacamole**](resources/guacamole.md)
 
-![connect](/resources/TigerVncViewer1.png "Connect")
-![request](/resources/TigerVncViewer2.png "Request")
-![session](/resources/TigerVncViewer3.png "Session")
-
+<div style="display: flex;">
+    <img src="resources/TigerVncViewer1.png" alt="Connect" style="height: 200px; margin: 5px;" />
+    <img src="resources/TigerVncViewer2.png" alt="Request" style="height: 200px; margin: 5px;" />
+    <img src="resources/TigerVncViewer3.png" alt="Session" style="height: 200px; margin: 5px;" />
+</div>
 
 ## SupraRBI-VNC server
 The SupraRBI-VNC server functions as a proxy for on-demand projector instances, which are VNC servers each hosting a running browser specifically for a target URL. 
@@ -23,12 +24,12 @@ The SupraRBI-VNC server functions as a proxy for on-demand projector instances, 
 
 docker run --name vnc-rbi -d \
     --network supra-projector \
-	-p 5900:5900 \
-	-e SUPRA_PROJECTOR_NETWORK='supra-projector' \
-	-e SUPRA_PROJECTOR_IMAGE='projector-chrome' \
+    -p 5900:5900 \
+    -e SUPRA_PROJECTOR_NETWORK='supra-projector' \
+    -e SUPRA_PROJECTOR_IMAGE='projector-chrome' \
     -e LOG_LEVEL='debug' \
-	-v /var/run/docker.sock:/var/run/docker.sock \
-	supraaxes/suprarbi-vnc
+    -v /var/run/docker.sock:/var/run/docker.sock \
+    supraaxes/suprarbi-vnc
 ```
 ### exposing ports
 - **VNC server**: 5900
@@ -79,9 +80,9 @@ A projector instance is a docker container providing a RBI session to a target U
 - listen for incoming VNC requests from the SupraRBI-VNC server
 
 ### projector image
-With **projector-chrome**[resources/projector-chrome.md], chrome in kiosk mode is used to open the target URL. 
+With [**projector-chrome**](https://github.com/supraaxes/projector-chrome), chrome in kiosk mode is used to open the target URL. 
 
-For improved user experience as well as additional functionalities, commercial projector image [**projector-supra-web**](https://github/supraaxes/projector-supra-web) may be used.
+For improved user experience as well as additional functionalities, commercial projector image [**projector-supra-web**](https://github.com/supraaxes/projector-supra-web) may be used.
 
 ### PulseAudio
 While VNC does not provide support for audio, users can obtain audio through direct connection to the PulseAudio server on TCP port **4713** running in a projector instance. 
