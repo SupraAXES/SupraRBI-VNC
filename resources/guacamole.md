@@ -21,7 +21,7 @@ The configuration on Apache Guacamole is straight forward.
     > Username: *https://github.com*<br>
     > Password: *{}*<br>
 
-2. Integrated installation with containers, dynamic session to https://www.google.com, with audio on. 
+2. Integrated installation with containers, shared session to https://www.google.com, with audio on. 
     
     > *NOTE: Please ensure the guacd container is in the same network as the SupraRBI-VNC server*. <br>
     >
@@ -41,7 +41,7 @@ The configuration on Apache Guacamole is straight forward.
     >   *2. The github autofill setting file on host is /opt/supra/rbi/conf/autofill/github.json* <br>
     >   *3. The license file on host is /opt/supra/rbi/conf/license.json*
     >
-    > Name: *rbi-google*<br>
+    > Name: *rbi-github*<br>
     > Protocol: *VNC*<br>
     > Hostname: *rbi-vnc*<br>
     > Port: *5900*<br>
