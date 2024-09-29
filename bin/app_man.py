@@ -66,8 +66,8 @@ def _run_rbi(name, url, idle_connection, idle_user, mounts, instance_settings):
             name=name,
             image=_proj_image
         )
-    except:
-        pass
+    except Exception as e:
+        logging.debug(f'{e}')
     finally:
         client.close()
 
@@ -77,14 +77,16 @@ def _stop_rbi(name):
     try:
         container = client.containers.get(name)
         container.stop()
-    except:
+    except Exception as e:
+        logging.debug(f'{e}')
         pass
     finally:
         client.close()
 
 
 async def run_rbi(name, url, idle_connection, idle_user, mounts, instance_settings):
-    logging.info(f'rbi run: {name}, url: {url}')
+    logging.info(f'rbi run: name: {name}, url: {url}')
+    logging.debug(f'rbi run: idle_connection: {idle_connection}, idle_user: {idle_user}, mounts: {mounts}, instance_settings: {instance_settings}')
     await asyncio.to_thread(_run_rbi, name, url, idle_connection, idle_user, mounts, instance_settings)
 
 

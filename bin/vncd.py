@@ -106,6 +106,21 @@ async def _relay(reader: StreamReader, writer: StreamWriter):
             await writer.drain()
 
 
+async def _check_pulseaudio(target):
+    while True:
+        try:
+            await asyncio.open_connection(target, 4713)  # pulseaudio
+            logging.debug(f'pulseaudio checked')
+            return
+        except Exception:  # dont wait in case of system exception
+            await asyncio.sleep(0.5)
+
+
+async def _check_point(target):
+    async with asyncio.timeout(30):
+        await _check_pulseaudio(target)
+
+
 async def handler(reader: StreamReader, writer: StreamWriter):
     try:
         writer.write(RFB_VER)
@@ -153,6 +168,7 @@ async def handler(reader: StreamReader, writer: StreamWriter):
                               misc_conf['mounts'], misc_conf['instance-settings'])
 
         back_reader, back_writer = await none_client.handshake(rbi_id)
+        await _check_point(rbi_id)
 
         writer.write(RFB_AUTH_OK)
         await writer.drain()

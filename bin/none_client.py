@@ -13,7 +13,7 @@ async def _try_connect(target):
         try:
             reader, writer = await asyncio.open_connection(target, 5900)
             return reader, writer
-        except:
+        except Exception:  # dont wait in case of system exception
             await asyncio.sleep(0.5)
 
 
